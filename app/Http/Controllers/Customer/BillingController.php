@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
+use Cart;
 use App\Models\Order;
 use Auth;
 use App\Models\Province;
@@ -28,7 +29,7 @@ class BillingController extends Controller
             'phone' => $request->phone,
             'note' => $request->note,
         ]);
-        dd();
+
         $job = (new SendMail($request->email))->delay(Carbon::now()->addSeconds(5));
         dispatch($job);
         //     $info = Cart::content();
