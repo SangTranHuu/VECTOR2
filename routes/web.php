@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('customers.master');
+    return view('customers.layout.master');
 })->name('home');
 
 Route::group(['middleware' => 'web'], function () {
@@ -57,9 +57,10 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth', 'middleware' => 'guest'
 Route::group(['namespace' => 'Customer', 'prefix' => '' ], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/category/{id}', 'CategoryController@show')->name('category.show');
-    Route::resource('carts', 'CartController', ['except' => ['destroy']]);
+    Route::resource('billing', 'BillingController', ['only' => ['store']]);
+    Route::resource('carts', 'CartController', ['except' => ['destroy', 'show']]);
     Route::post('carts/destroy', 'CartController@destroy');
-
+    Route::post('carts/update-cart', 'CartController@updateCart');
 });
 
 

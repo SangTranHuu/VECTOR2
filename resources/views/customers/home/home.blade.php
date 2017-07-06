@@ -188,5 +188,16 @@
                 }
             });
         });
+        $('.glyphicon-remove"').click(function(e) {
+            e.preventDefault();
+            // $.ajax({
+            //     url: $(this).attr('href');
+            //     type: "GET",
+            //     success : function(data){
+            //         console.log(data);
+            //     }
+            // });
+            alert($(this).attr('href'));
+        })
     </script>
 @endpush

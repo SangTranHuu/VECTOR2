@@ -15,6 +15,52 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    {!! Html::script('assets/plugins/toastr/toastr.min.js') !!}
+    <script type="text/javascript">
+        $('.form-add').submit(function (e){
+            e.preventDefault();
+            console.log($(this).attr('action'));
+            $.ajax({
+                url : $(this).attr('action'),
+                data : $(this).serialize(),
+                type : "POST",
+                success : function(data){
+
+                    $('#cart-sidebar').html(data.cartContent);
+                    $('#cart-total').html(data.total);
+                    $('.top-subtotal .price').html('$' + data.subTotal);
+
+                    toastr["success"]("Complete bought product !")
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-bottom-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    /*toastr.success('You Bought Product');*/
+
+                }
+            });
+        });
+
+        $('.glyphicon-remove').click(function(event) {
+            /* Act on the event */
+            event.preventDefault();
+                alert('oke');
+        });
+
+    </script>
 </head>
 <body>
     @include('admin.layout.section.nav_master')
