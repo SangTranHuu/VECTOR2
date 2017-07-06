@@ -16,6 +16,9 @@
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
         {!! Html::script('assets/plugins/sweetalert/sweetalert.min.js') !!}
         {!! Html::style('assets/plugins/sweetalert/sweetalert.css') !!}
+        {!! Html::style('assets/plugins/toastr/toastr.min.css') !!}
+        
+        
         @yield('css')
         @stack('styles')
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -28,6 +31,7 @@
 <body>
     @include('customers.layout.sections.header')
     @include('customers.layout.sections.navbar')
+    @include('customers.layout.sections.header-service')
     @yield('content')
     @yield('related')
     @include('customers.layout.sections.footer')

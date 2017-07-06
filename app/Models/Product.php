@@ -74,6 +74,6 @@ class Product extends Model
 
     public function getImageAttribute($image)
     {
-        return url('assets/images/products-images') . '/' . $image;
+        return config('common.path.product-image') . $image;
     }
 }

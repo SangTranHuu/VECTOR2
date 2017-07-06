@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-lg-2 col-sm-3 col-md-2 col-xs-12">
                 <!-- Header Logo --> 
-                <a class="logo" title="Magento Commerce" href="{{ route('home') }}"><img alt="Magento Commerce" src="{{ asset('assets/images/logo.png') }}"></a>
+                <a class="logo" title="Magento Commerce" href="index.html"><img alt="Magento Commerce" src="{{ asset('assets/images/logo.png') }}"></a> 
                 <!-- End Header Logo --> 
             </div>
             <div class="col-lg-7 col-sm-4 col-md-6 col-xs-12">
@@ -87,12 +87,12 @@
                             <div class="top-cart-content arrow_box">
                                 <div class="block-subtitle">Recently added item(s)</div>
                                 <ul id="cart-sidebar" class="mini-products-list">
-                                    @foreach (Cart::content() as $product)
+                                    @foreach (Cart::content() as $key => $product)
                                     <li class="item even">
                                         <a class="product-image" href="#" title="Downloadable Product ">{!! Html::image($product['image'], null, ['width' => 80], null) !!}
                                         <div class="detail-item">
                                             <div class="product-details">
-                                                <a href="#" title="Remove This Item" onClick="" class="glyphicon glyphicon-remove">&nbsp;</a> <a class="glyphicon glyphicon-pencil" title="Edit item" href="#">&nbsp;</a>
+                                                <a href="{{ action('Customer\CartController@edit', ['id' => $key]) }}" title="Remove This Item" onClick="" class="glyphicon glyphicon-remove">&nbsp;</a>
                                                 <p class="product-name"> <a href="#" title="Downloadable Product">{{ $product['name'] }}</a> </p>
                                             </div>
                                             <div class="product-details-bottom"> <span class="price">{{ $product['price'] }}</span> <span class="title-desc">Qty:</span> <strong>{{ $product['qty'] }}</strong> </div>

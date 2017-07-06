@@ -72,6 +72,7 @@ class CartController extends Controller
             'cartContent' => view('customers.carts.components.itemCart', ['cartContent' => Cart::content()])->render(),
             'total' => Cart::count(),
         ]);
+        // return response()->json(['data' => $id]);
     }
 
     /**

@@ -44,13 +44,17 @@ mix.scripts([
     USER_JS_PATH + 'cloud-zoom.js',
     USER_JS_PATH + 'jquery.jcarousel.min',
 ], 'public/assets/js/customer.min.js');
-
+//mix.copy('resources/assets/bower/toastr/toastr.css', 'public/assets/plugins/toastr/toastr.css');
+//mix.copy('resources/assets/bower/toastr/toastr.less', 'public/assets/plugins/toastr/toastr.less');
+//mix.copy('resources/assets/bower/toastr/toastr.js', 'public/assets/plugins/toastr/toastr.js');
+//mix.copy('resources/assets/bower/toastr/toastr.js.map', 'public/assets/plugins/toastr/toastr.js.map');
+mix.copy('resources/assets/bower/toastr/toastr.min.css', 'public/assets/plugins/toastr/toastr.min.css');
+mix.copy('resources/assets/bower/toastr/toastr.min.js', 'public/assets/plugins/toastr/toastr.min.js');
+//mix.copy('resources/assets/bower/toastr/toastr.scss', 'public/assets/plugins/toastr/toastr.scss');
+mix.copy('resources/assets/bower/sweetalert/dist/','public/assets/plugins/sweetalert/');
 mix.copy([
     ADMIN_PATH + 'font_awesome/fonts',
 ], 'public/assets/fonts');
-mix.copy('resources/assets/bower/sweetalert/dist/','public/assets/plugins/sweetalert/');
-mix.copy('resources/assets/bower/toastr/','public/assets/plugins/toastr/');
-
 mix.copy(ADMIN_PATH + 'img', 'public/assets/img');
 mix.copy(ADMIN_PATH + 'css/patterns', 'public/assets/css/patterns');
 mix.copy(ADMIN_PATH + 'css/patterns', 'public/assets/css/patterns');

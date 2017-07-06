@@ -39,6 +39,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/product/getBottomCategory/{firstCategoryId}', 'ProductController@getBottomCategory')->name('product.getBottomCategory');
         Route::get('/product/addProperties/{id}', 'ProductController@addProperties')->name('product.addProperties');
         Route::post('/product/saveProperties', 'ProductController@saveProperties')->name('product.saveProperties');
+        //Route::post('/product/search', 'ProductController@search')->name('product.search');
         Route::post('/product/search', 'ProductController@search')->name('product.search');
         Route::resource('/product', 'ProductController');
 
@@ -53,13 +54,10 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth', 'middleware' => 'guest'
     Route::post('register', 'RegisterController@register');
     Route::post('logout', 'LoginController@logout'); // GUEST middleware???
 });
-
-Route::group(['namespace' => 'Customer', 'prefix' => '' ], function () {
-    Route::get('/', 'HomeController@index')->name('home');
-    Route::get('/category/{id}', 'CategoryController@show')->name('category.show');
-    Route::resource('carts', 'CartController', ['except' => ['destroy']]);
-    Route::post('carts/destroy', 'CartController@destroy');
-
+Route::get('/home', 'Customer\HomeController@index');
+Route::resource('carts', 'Customer\CartController', ['except' => ['destroy']]);
+Route::post('carts/destroy', 'Customer\CartController@destroy');
+Route::resource('billings', 'Customer\BillingController', ['only' => 'store']);
+Route::get('test', function () {
+    return view('welcome');
 });
-
-
